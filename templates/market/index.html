@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block maincontent %}
+<!--Main Content Start-->
+<div class="main-content">
+    <!--Welcome Section-->
+    <section class="welcome-section">
+        <div class="container">
+            <div class="row">
+                <div class="welcome-box">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="welcome-text">
+                            <div class="sectio-title-2"><strong>Welcome to</strong>
+                                <h2>OLX</h2>
+                            </div>
+                            <p> OLX is an online marketplace that enables individuals to buy and sell goods and services
+                                locally. It operates in various countries and allows users to list items for sale or
+                                search for products across categories like electronics, vehicles, real estate, jobs, and
+                                more. Founded in 2006, OLX provides a platform for users to interact directly, negotiate
+                                prices, and arrange transactions, often without intermediary involvement. It facilitates
+                                both individual-to-individual (C2C) and business-to-consumer (B2C) transactions,
+                                promoting a convenient and accessible way for people to trade used or new items within
+                                their communities.</p>
+                            <p>OLX serves as a user-friendly platform that fosters easy communication and transactions
+                                between buyers and sellers. It allows users to create free listings with details,
+                                photos, and pricing, enhancing visibility for their products or services.</p>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="welcome-img"><img src="{% static 'olx_market/images/welcome1.png' %}" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Welcome Section End-->
+
+    <!--Home Services Start-->
+    <section class="home-features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <div class="features-box">
+                        <h3>Large User Base</h3>
+                        <p> OLX has a vast user base, increasing the visibility of items listed for sale and improving
+                            the chances of finding potential buyers.</p>
+
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <div class="features-box selected">
+                        <h3>Direct Communication</h3>
+                        <p>OLX facilitates direct communication between buyers and sellers, enabling negotiation of
+                            prices and terms without intermediaries.</p>
+
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <div class="features-box">
+                        <h3>Cost-Effective Deals</h3>
+                        <p>Buyers can find both new and used items at competitive prices on OLX, often at more
+                            affordable rates compared to traditional retail stores.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Home Services End-->
+
+    <!--Services Section Start-->
+    <section class="home-services">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title-3"><strong>Our Services</strong>
+                        <h2>Features</h2>
+                    </div>
+                </div>
+
+                <!--service style 1-->
+                <div class="col-md-12">
+                    <div class="service-style-1">
+                        <div class="row">
+                            <!--service box start-->
+                            {% for service in services %}
+                            <div class="col-md-3 col-sm-3">
+                                <div class="service-box">
+                                    <div class="ser-thumb"><a href="{% url 'service_details' service.id %}"
+                                                              class="view"></a> <img
+                                            src="{{ service.thumbnail.url }}"
+                                            alt="">
+                                    </div>
+                                    <div class="ser-content">
+                                        <h3><a href="{% url 'service_details' service.id %}">{{ service.title }}</a>
+                                        </h3>
+                                        <p>{{ service.description|truncatewords:15 }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <!--service box End-->
+                        </div>
+                    </div>
+                </div>
+                <!--service style 1 End-->
+
+            </div>
+        </div>
+    </section>
+    <!--Services Section End-->
+
+
+
+
+    <!--Testimonials + Faqs Start-->
+    <section class="testi-faq">
+        <div class="container">
+            <div class="row">
+
+                <!--Testimonials Start-->
+                <div class="col-md-6">
+                    <div class="home-testimonials">
+                        <div class="sectio-title-2"><strong>Read What Says Our</strong>
+                            <h2>Happy Customers</h2>
+                        </div>
+                        <div id="testimonial-slider" class="owl-carousel owl-theme">
+
+                            <!--Slider Start-->
+                            <div class="item">
+                                <div class="testimonial-holder">
+                                    <div class="user-thumb"><img src="{% static 'olx_market/images/tuser.jpg' %}" alt="">
+                                        <strong>Anna
+                                            Anderson</strong>
+                                        <i>A Buyer</i></div>
+                                    <div class="test-text">
+                                        <p>Praise OLX for its user-friendly interface and straightforward process for
+                                            buying and selling items. Many appreciate how easy it is to create listings
+                                            and navigate through the platform.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="testimonial-holder">
+                                    <div class="user-thumb"><img src="{% static 'olx_market/images/tuser-2.jpg' %}"
+                                                                 alt=""> <strong>Anna
+                                        Anderson</strong>
+                                        <i>A Seller</i></div>
+                                    <div class="test-text">
+                                        <p>People value the extensive range of categories available on OLX, allowing
+                                            them to find a diverse selection of products and services, both new and
+                                            used, all in one place.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="testimonial-holder">
+                                    <div class="user-thumb"><img src="{% static 'olx_market/images/tuser.jpg' %}" alt="">
+                                        <strong>Anna
+                                            Anderson</strong>
+                                        <i>A Buyer</i></div>
+                                    <div class="test-text">
+                                        <p>A The direct communication feature between buyers and sellers through
+                                            messaging or chat is frequently commended. Users find it convenient for
+                                            negotiating prices, asking questions about listings, and arranging
+                                            transactions.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Slider End-->
+
+                        </div>
+                    </div>
+                </div>
+                <!--Testimonials End-->
+
+
+
+            </div>
+        </div>
+    </section>
+    <!--Testimonials + Faqs End-->
+
+</div>
+<!--Main Content End-->
+{% endblock maincontent %}

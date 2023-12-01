@@ -4,10 +4,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3 col-sm-6">
-          <div class="widget"> <img class="ft-logo" src="{% static 'heartcare/images/footer-logo.png' %}" alt="">
-            <p>The Heart Care Heart Hospital have latest technology machines with experty Heart specialist doctors
-              consectetur adipisicing elit. Distinctio vitae maiores enim ea atque? Natus iure autem cumque, quaerat
-              distinctio pariatur velit illo hic a eos paccusamus. </p>
+          <div class="widget"> <img class="ft-logo" src="{% static 'olx_market/images/footer_logo.png' %}" alt="">
+            <p>OLX often covers other miscellaneous categories catering to a wide range of user needs and preferences. The platform's diverse categories provide users with a broad spectrum of options when buying or selling products and services.</p>
           </div>
         </div>
         <div class="col-md-3 col-sm-6">
@@ -23,10 +21,10 @@
         </div>
         <div class="col-md-3 col-sm-6">
           <div class="widget">
-            <h3>Expert Doctors</h3>
+            <h3></h3>
             <ul>
-              {% for doctor in doctors|slice:':8' %}
-              <li><a href="{% url 'doctor_details' doctor.id %}"><i class="fa fa-arrow-right"></i> {{ doctor.name }}</a>
+              {% for Client in Clients|slice:':8' %}
+              <li><a href="{% url 'Client_details' Client.id %}"><i class="fa fa-arrow-right"></i> {{ Client.name }}</a>
               </li>
               {% endfor %}
             </ul>
@@ -34,17 +32,16 @@
         </div>
         <div class="col-md-3 col-sm-6">
           <div class="widget">
-            <h3>Contact us</h3>
+            <h3>Contact</h3>
             <address>
               <ul>
                 <li> <span class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></span> <span
-                    class="add-text"><strong>Main Branch:</strong> Dhanmondi 27, Dhaka</span> </li>
+                    class="add-text"><strong>Sandra Dhaneesh</strong> Trivandrum</span> </li>
                 <li> <span class="icon"><i class="fa fa-phone-square" aria-hidden="true"></i></span> <span
-                    class="add-text"><strong>Call us Anytime at:</strong> +8801719058105</span> </li>
+                    class="add-text"><strong>Call at:</strong> +91 8113848852</span> </li>
                 <li> <span class="icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span> <span
-                    class="add-text"><strong>For Inquiry:</strong> info@heartcare.com</span> </li>
-                <li> <span class="icon"><i class="fa fa-clock-o" aria-hidden="true"></i></span> <span
-                    class="add-text"><strong>Our Timings:</strong> Mon-Sat: 9:00am-7:00pm</span> </li>
+                    class="add-text"><strong>For Inquiry:</strong> info@olx.com</span> </li>
+
               </ul>
             </address>
           </div>
@@ -63,7 +60,7 @@
           </div>
         </div>
         <div class="col-md-6">
-          <p><strong>HeartCare</strong> © {% now 'Y' %}, All Rights Reserved, Design & Developed By Mahmudul Alam</p>
+          <p><strong>OLX</strong> © {% now 'Y' %}, All Rights Reserved</p>
         </div>
       </div>
     </div>

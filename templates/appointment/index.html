@@ -32,7 +32,7 @@
   <section class="appointment-form">
     <div class="container">
       <div class="row">
-        <div class="col-md-6"><img src="{% static 'heartcare/images/form-pic.jpg' %}" alt=""></div>
+        <div class="col-md-6"><img src="{% static 'olx_market/images/reg.jpg' %}" alt=""></div>
         <div class="col-md-6">
           <form action="{% url 'appointment' %}" method="post">
             {% csrf_token %}
@@ -47,10 +47,10 @@
                 <input class="form-control" placeholder="Your Email *" type="text" name="email">
               </div>
               <div class="col-md-6 col-sm-6">
-                <select name="doctor">
-                  <option disabled>--Doctor--</option>
-                  {% for doctor in doctors %}
-                  <option value="{{ doctor.id }}">{{ doctor.name }}</option>
+                <select name="Client">
+                  <option disabled>--Client--</option>
+                  {% for Client in Clients %}
+                  <option value="{{ Client.id }}">{{ Client.name }}</option>
                   {% endfor %}
                 </select>
               </div>
@@ -68,8 +68,9 @@
               </div>
               <div class="col-md-12 text-center">
                 <textarea placeholder="Extra Note" name="note"></textarea>
-                <input value="Book Appointment" type="submit">
+                <input value="Book Appointmt" type="submit">
               </div>
+              <br>
             </div>
           </form>
         </div>
@@ -77,5 +78,6 @@
     </div>
   </section>
 </div>
+<br><br>
 <!--Main Content End-->
 {% endblock maincontent %}
