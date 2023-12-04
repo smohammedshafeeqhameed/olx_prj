@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'user.OlxUser'
+
 
 # Application definition
 
@@ -38,9 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'phonenumber_field',
+    'django_bootstrap5',
     'market',
     'appointment',
-    'olx_app',
+    'user',
+    'product'
 ]
 
 MIDDLEWARE = [
@@ -132,10 +137,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
-# Email Settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'sandradhaneesh0789@gmail.com'
-EMAIL_HOST_PASSWORD = 'your password'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'amalatl6@gmail.com'
+EMAIL_HOST_PASSWORD = 'purqtirhzksckqop'
+EMAIL_PORT = 587
+
+
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = "/dashboard/"

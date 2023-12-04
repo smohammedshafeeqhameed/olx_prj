@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+{% block maincontent %}
+<!--inner banner-->
+{% if messages %}
+<div class="alert alert-success text-center" id="alert-msg">
+  {% for message in messages %}
+  <h3>{{ message }}</h3>
+  {% endfor %}
+</div>
+{% endif %}
+<style>
+  #id_firstname {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  #id_lastname {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  #id_phone {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  #id_country {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  #id_district {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  #id_email {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  #id_state {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .reg-form{
+    margin-bottom: 20px;
+  }
+
+  #id_password{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  #id_confirm_password{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      // Function to generate a random six-digit value
+      function generateRandomValue() {
+          return Math.floor(100000 + Math.random() * 900000);
+      }
+  
+      // Get the password and confirm_password fields by their IDs
+      var passwordField = document.getElementById("id_password");
+      var confirmPasswordField = document.getElementById("id_confirm_password");
+  
+      // Set the initial values for the password fields
+      var randomValue = generateRandomValue();
+      passwordField.value = randomValue;
+      confirmPasswordField.value = randomValue;
+  
+      // Disable the password fields
+      passwordField.disabled = true;
+      confirmPasswordField.disabled = true;
+
+        // Add hidden fields with the same name as password fields
+      var hiddenPasswordField = document.createElement("input");
+      hiddenPasswordField.type = "hidden";
+      hiddenPasswordField.name = "password";
+      hiddenPasswordField.value = randomValue;
+
+      var hiddenConfirmPasswordField = document.createElement("input");
+      hiddenConfirmPasswordField.type = "hidden";
+      hiddenConfirmPasswordField.name = "confirm_password";
+      hiddenConfirmPasswordField.value = randomValue;
+
+      // Append hidden fields to the form
+      var form = document.querySelector("form");
+      form.appendChild(hiddenPasswordField);
+      form.appendChild(hiddenConfirmPasswordField);
+  });
+  </script>
+  
+<div class="inner-banner">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <h1>Sign Up</h1>
+      </div>
+      <div class="col-md-5">
+        <ol class="breadcrumb">
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li class="active">Appointment</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!--inner banner End-->
+
+<!--Main Content Start-->
+<div class="main-content padding-0">
+  <section class="registration-form">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6"><img src="{% static 'olx_market/images/reg.jpg' %}" alt=""></div>
+        <div class="col-md-6">
+          <form action="{% url 'user:register' %}" method="post" id="registrationForm">
+            {% csrf_token %}
+            <div class="reg-form">
+              {% bootstrap_form form %}
+              
+              <div class="d-flex justify-content-between">
+                <input type="submit" class="btn btn-primary" value="Sign Up">
+                <span class="text-muted mt-2">Already have an account.<a href="#">Login</a></span>
+            </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<br><br>
+
+{% endblock maincontent %}

@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+{% block maincontent %}
+<!--inner banner-->
+{% if messages %}
+<div class="alert alert-success text-center" id="alert-msg">
+    {% for message in messages %}
+    <h3>{{ message }}</h3>
+    {% endfor %}
+</div>
+{% endif %}
+<style>
+    #id_username {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    #id_password {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .forgotp {
+        display: inline-block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .register {
+        display: inline-block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    /* Style the modal container */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    /* Style the modal content */
+    .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fefefe;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 400px;
+        text-align: center;
+    }
+
+    /* Style the close button */
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var registrationSuccess = getCookie('registration_success');
+
+        if (registrationSuccess === 'true') {
+            var modal = document.getElementById('myModal');
+            modal.style.display = 'block';
+
+            // Close the modal when the 'x' button is clicked
+            document.querySelector('.close').onclick = function () {
+                modal.style.display = 'none';
+                document.cookie = 'registration_success=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            };
+
+            // Close the modal if the user clicks outside the modal
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                    document.cookie = 'registration_success=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                }
+            };
+        }
+    });
+
+    function getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length === 2) return parts.pop().split(";").shift();
+    }
+</script>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Registration Successful</h2>
+        <p>Please check your email for the temporary login credentials.</p>
+        <p>Login with the provided email and password.</p>
+    </div>
+</div>
+<div class="inner-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>Login</h1>
+            </div>
+            <div class="col-md-5">
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li class="active">Appointment</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!--inner banner End-->
+
+<!--Main Content Start-->
+<div class="main-content padding-0">
+    <section class="registration-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6"><img src="{% static 'olx_market/images/reg.jpg' %}" alt=""></div>
+                <div class="col-md-6">
+                    <form method="post" id="registrationForm">
+                        {% csrf_token %}
+                        <div class="reg-form">
+                            {% bootstrap_form form %}
+
+                            <div class="d-flex justify-content-between">
+                                <input type="submit" class="btn btn-primary" value="Sign Up">
+                                <br><span class="text-muted mt-2 register">Do not have an account? <a
+                                        href="{% url 'user:register' %}">Register</a></span>
+                                <br><span class="text-muted signup-text mt-4 d-block forgotp">Forgot your password? <a
+                                        href="{% url 'user:password-reset' %}">Reset Password</a></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<br><br>
+
+{% endblock maincontent %}

@@ -7,7 +7,7 @@
             <div class="container">
               <h1>{{ slider.caption }}</h1>
               <p>{{ slider.slogan }}</p>
-              <a class="btn-1" href="/register">Login</a> <a class="btn-1" href="#">Sign Up</a>
+              <a class="btn-1" href="{% url 'user:login' %}">Login</a> <a class="btn-1" href="{% url 'user:register' %}">Sign Up</a>
             </div>
           </div>
           <span class="simg"><img src="{{ slider.image.url }}" alt=""></span>
