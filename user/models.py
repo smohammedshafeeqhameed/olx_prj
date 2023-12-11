@@ -59,7 +59,7 @@ class OlxUser(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
-    is_approved = models.CharField(choices=ApproveChoices.choices, max_length=50, default=ApproveChoices.Stasis)
+    is_approved = models.IntegerField(choices=ApproveChoices.choices, default=ApproveChoices.Stasis)
     groups = models.ManyToManyField(Group, related_name='olx_user_groups')
     user_permissions = models.ManyToManyField(Permission, related_name='olx_user_permissions')
 
